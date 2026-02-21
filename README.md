@@ -9,6 +9,7 @@ EquiPlanner is a JavaFX desktop application for managing horses, riders, instruc
 1. Clone this repository.  
 2. Navigate to the `EquiPlanner` Java file inside `src`.  
 3. Run the application from your IDE or command line.  
+4. Username is EquiAdmin, and password is 01-Equi!
 
 **Note:** When creating a lesson and adding a horse to a rider, you need to click on that row **three times** to register the selection.  
 
