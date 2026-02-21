@@ -4,19 +4,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
 
 public class Lesson {
-    private Integer lessonId;
+    private int lessonId;
     private LocalDate lessonDate;
     private LocalTime startTime;
     private Double duration;
     private String location;
-    private Instructor instructor;
+    private String instructor;
     private ObservableList<Combination> combinations;
 
-    public Lesson(Integer lessonId, LocalDate lessonDate,
+    public Lesson(int lessonId, LocalDate lessonDate,
                   LocalTime startTime,Double duration,
-                  String location, Instructor instructor) {
+                  String location, String instructor) {
         this.lessonId = lessonId;
         this.lessonDate = lessonDate;
         this.startTime = startTime;
@@ -27,27 +29,26 @@ public class Lesson {
     }
 
     // --- Eindtijd les berekenen ---
-    public LocalTime getEndTime() {
-        return startTime.plusMinutes((long)(duration * 60));
+    public LocalTime getEndTime() {return startTime.plusMinutes((long)(duration * 60));}
+
+    // --- Berekende velden ---
+    public int getWeekNumber() {
+        WeekFields weekFields = WeekFields.of(Locale.getDefault());
+        return lessonDate.get(weekFields.weekOfWeekBasedYear());
     }
+
+    public String getDay() {return lessonDate.getDayOfWeek().toString();}
+
 
     // --- Getters en setters ---
 
-    public ObservableList<Combination> getCombinations() {
-        return combinations;
-    }
+    public ObservableList<Combination> getCombinations() {return combinations;}
 
-    public Instructor getInstructor() {
-        return instructor;
-    }
+    public String getInstructorName() {return instructor;}
 
-    public Double getDuration() {
-        return duration;
-    }
+    public Double getDuration() {return duration;}
 
-    public String getLocation() {
-        return location;
-    }
+    public String getLocation() {return location;}
 
     public Integer getLessonId() {return lessonId;}
 

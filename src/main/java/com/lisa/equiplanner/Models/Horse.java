@@ -56,4 +56,9 @@ public class Horse {
     public void setMaxHoursOfWork(int maxHoursOfWork) {
         this.maxHoursOfWork = maxHoursOfWork;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

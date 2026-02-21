@@ -24,6 +24,7 @@ public class NavBar {
         navBar.getChildren().addAll(
                 generateNavItem("Paarden overzicht", activeItem.equals("Paarden overzicht")),
                 generateNavItem("Ruiter overzicht", activeItem.equals("Ruiter overzicht")),
+                generateNavItem("Instructeur overzicht", activeItem.equals("Instructeur overzicht")),
                 generateNavItem("Lessen overzicht", activeItem.equals("Lessen overzicht"))
         );
 
