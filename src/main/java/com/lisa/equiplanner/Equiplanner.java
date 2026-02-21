@@ -14,22 +14,18 @@ import java.io.IOException;
 public class Equiplanner extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        Database db = new Database();
         Pane root = new Pane();
         Scene loginScene = new Scene(root, 800, 550);
         Double center = loginScene.getWidth() / 2;
 
-        ImageView loginImg = new ImageView(
-                new Image(String.valueOf(Equiplanner.class.getResource("imgs/dressuurbakMolenzicht.jpg")))
-        );
-        loginImg.setFitWidth(center);
-        loginImg.setFitHeight(loginScene.getHeight());
 
         BorderPane login = new BorderPane();
         login.setPrefSize(center, loginScene.getHeight());
         login.setLayoutX(center);
         login.setStyle("-fx-background-color: #f4dfcd;");
 
-        root.getChildren().addAll(loginImg, login);
+        root.getChildren().addAll( login);
         stage.setTitle("Equiplanner");
         stage.setScene(loginScene);
         stage.show();
