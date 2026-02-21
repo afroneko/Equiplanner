@@ -8,6 +8,7 @@ public class Rider extends Person{
         this.hasLeaseHorse = hasLeaseHorse;
     }
 
+    // Getters
     public Boolean getHasLeaseHorse() {
         return hasLeaseHorse;
     }

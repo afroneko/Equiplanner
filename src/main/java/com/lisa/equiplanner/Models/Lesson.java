@@ -16,6 +16,7 @@ public class Lesson {
         this.combinations = FXCollections.observableArrayList();
     }
 
+    // Getters and setters
     public void addCombination(Combination combination) {
         combinations.add(combination);
     }

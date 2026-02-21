@@ -8,6 +8,7 @@ public class Instructor extends Person{
         this.doesTrailRides = doesTrailRides;
     }
 
+    // Getters
     public Boolean getDoesTrailRides() {
         return doesTrailRides;
     }

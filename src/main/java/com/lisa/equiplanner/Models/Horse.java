@@ -13,6 +13,7 @@ public class Horse {
         this.maxHoursOfWork = maxHoursOfWork;
     }
 
+    // Getters
     public String getName() {
         return name;
     }

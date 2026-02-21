@@ -29,6 +29,7 @@ public class Address {
         this(-1,zipCode,houseNo,suffix,street,city,country);
     }
 
+    // Getters and setters
     public void setAddressID(int addressID){
         this.addressID = addressID;
     }
