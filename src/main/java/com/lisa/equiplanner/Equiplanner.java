@@ -2,6 +2,7 @@ package com.lisa.equiplanner;
 
 import com.lisa.equiplanner.Controllers.AdminController;
 import com.lisa.equiplanner.Controllers.HorseController;
+import com.lisa.equiplanner.Controllers.RiderController;
 import com.lisa.equiplanner.Views.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -15,6 +16,7 @@ public class Equiplanner extends Application {
     private AdminController ac;
     private AuthenticationView authView;
     private HorseController hc;
+    private RiderController rc;
 
     @Override
     public void start(Stage stage) {
@@ -22,6 +24,7 @@ public class Equiplanner extends Application {
 
         ac = new AdminController(new Database());
         hc = new HorseController(new Database());
+        rc = new RiderController(new Database());
         authView = new AuthenticationView(ac);
 
         showLogin();
@@ -64,7 +67,7 @@ public class Equiplanner extends Application {
                 content = new HorseOverview(hc).getContent();
                 break;
             case "Ruiter overzicht":
-                content = new RiderOverview().getContent();
+                content = new RiderOverview(rc).getContent();
                 break;
             case "Lessen overzicht":
                 content = new LessonOverview().getContent();

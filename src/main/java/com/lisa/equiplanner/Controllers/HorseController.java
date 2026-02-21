@@ -20,7 +20,7 @@ public class HorseController {
         this.db = db;
     }
 
-    // --- Fetch all horses ---
+    // --- Alle paarden ophalen ---
     public ObservableList<Horse> getAllHorses() {
         ObservableList<Horse> list = FXCollections.observableArrayList();
         try {
@@ -45,7 +45,7 @@ public class HorseController {
         return list;
     }
 
-    // --- Delete horse ---
+    // --- Paard verwijderen ---
     public boolean deleteHorse(Horse horse) {
         try {
             Connection conn = db.getConn();
@@ -58,20 +58,16 @@ public class HorseController {
         }
     }
 
-    // --- Popup for adding a horse ---
+    // --- Popup om paard toe te voegen ---
     public void showAddHorsePopup() {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.setTitle("Paard toevoegen");
-
         TextField nameField = new TextField();
         nameField.setPromptText("Naam");
-
         TextField ageField = new TextField();
         ageField.setPromptText("Leeftijd");
-
         CheckBox conditionBox = new CheckBox("Kreupel");
-
         TextField maxHoursField = new TextField();
         maxHoursField.setPromptText("Inzetbaarheid");
 
@@ -80,22 +76,17 @@ public class HorseController {
         Button addButton = new Button("Opslaan");
         addButton.setOnAction(e -> {
             try {
-                String name = nameField.getText();
-                int age = Integer.parseInt(ageField.getText());
-                boolean isLame = conditionBox.isSelected();
-                int maxHours = Integer.parseInt(maxHoursField.getText());
-
                 Connection conn = db.getConn();
                 PreparedStatement ps = conn.prepareStatement(
                         "INSERT INTO Horse (Name, Age, isLame, MaxHoursOfWork) VALUES (?, ?, ?, ?)"
                 );
-                ps.setString(1, name);
-                ps.setInt(2, age);
-                ps.setBoolean(3, isLame);
-                ps.setInt(4, maxHours);
+                ps.setString(1, nameField.getText());
+                ps.setInt(2, Integer.parseInt(ageField.getText()));
+                ps.setBoolean(3, conditionBox.isSelected());
+                ps.setInt(4, Integer.parseInt(maxHoursField.getText()));
                 ps.executeUpdate();
 
-                message.setText("Horse added successfully!");
+                message.setText("Paard succesvol toegevoegd!");
 
             } catch (Exception ex) {
                 message.setText("Error: " + ex.getMessage());
@@ -113,7 +104,7 @@ public class HorseController {
     public void showUpdateHorsePopup(Horse horse) {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
-        popup.setTitle("Update Horse");
+        popup.setTitle("Paard aanpassen");
 
         TextField nameField = new TextField(horse.getName());
         TextField ageField = new TextField(String.valueOf(horse.getAge()));
@@ -141,7 +132,7 @@ public class HorseController {
                 ps.setInt(5, horse.getHorseId());
                 ps.executeUpdate();
 
-                message.setText("Horse updated successfully!");
+                message.setText("Paard succesvol aangepasd!");
 
             } catch (Exception ex) {
                 message.setText("Error: " + ex.getMessage());
@@ -160,7 +151,6 @@ public class HorseController {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.setTitle("Lessons for " + horse.getName());
-
         ListView<String> lessonsList = new ListView<>();
 
         try {

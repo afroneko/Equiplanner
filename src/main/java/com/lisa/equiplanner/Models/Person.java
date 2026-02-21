@@ -1,6 +1,7 @@
 package com.lisa.equiplanner.Models;
 
 public class Person {
+    private int personId;
     private String firstName;
     private String lastName;
     private String dateOfBirth;
@@ -8,7 +9,8 @@ public class Person {
     private String phonenumber;
     private Address address;
 
-    public Person(String firstName, String lastName, String dateOfBirth, String email, String phonenumber, Address address) {
+    public Person(int personId, String firstName, String lastName, String dateOfBirth, String email, String phonenumber, Address address) {
+        this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -18,6 +20,8 @@ public class Person {
     }
 
     // Getters
+    public int getPersonId() {return personId;}
+    public void setPersonId(int personId) {}
     public String getFirstName() {
         return firstName;
     }
@@ -44,5 +48,10 @@ public class Person {
 
     public Address getAddress() {
         return address;
+    }
+
+    @Override
+    public String toString(){
+        return this.firstName+ ": " + this.lastName;
     }
 }

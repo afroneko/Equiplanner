@@ -32,13 +32,10 @@ public class HorseOverview {
 
         TableColumn<Horse, String> nameCol = new TableColumn<>("Naam");
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-
         TableColumn<Horse, Integer> ageCol = new TableColumn<>("Leeftijd");
         ageCol.setCellValueFactory(new PropertyValueFactory<>("age"));
-
         TableColumn<Horse, Boolean> conditionCol = new TableColumn<>("kreupel");
         conditionCol.setCellValueFactory(new PropertyValueFactory<>("lame"));
-
         TableColumn<Horse, Integer> maxHoursCol = new TableColumn<>("Inzetbaarheid");
         maxHoursCol.setCellValueFactory(new PropertyValueFactory<>("maxHoursOfWork"));
 
