@@ -30,11 +30,15 @@ public class MenuView {
         riderOverview.setPrefWidth(200);
         riderOverview.setOnAction(e -> app.showOverview("Ruiter overzicht"));
 
+        Button instructorOverview = new Button("Instructeur overzicht");
+        instructorOverview.setPrefWidth(200);
+        instructorOverview.setOnAction(e -> app.showOverview("Instructeur overzicht"));
+
         Button lessonOverview = new Button("Lessen overzicht");
         lessonOverview.setPrefWidth(200);
         lessonOverview.setOnAction(e -> app.showOverview("Lessen overzicht"));
 
-        vBox.getChildren().addAll(horseOverview, riderOverview, lessonOverview);
+        vBox.getChildren().addAll(horseOverview, riderOverview, instructorOverview, lessonOverview);
 
         return new Scene(vBox, 800, 550);
     }

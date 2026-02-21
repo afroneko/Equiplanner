@@ -1,8 +1,6 @@
 package com.lisa.equiplanner;
 
-import com.lisa.equiplanner.Controllers.AdminController;
-import com.lisa.equiplanner.Controllers.HorseController;
-import com.lisa.equiplanner.Controllers.RiderController;
+import com.lisa.equiplanner.Controllers.*;
 import com.lisa.equiplanner.Views.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,14 +15,21 @@ public class Equiplanner extends Application {
     private AuthenticationView authView;
     private HorseController hc;
     private RiderController rc;
+    private InstructorController ic;
+    private LessonController lc;
 
     @Override
     public void start(Stage stage) {
         this.stage = stage;
+        //Een keer globaal database initiëren om vaker te gebruiken
+        Database db = new Database();
 
-        ac = new AdminController(new Database());
-        hc = new HorseController(new Database());
-        rc = new RiderController(new Database());
+        //Verschillende controllers initialiseren om mee te kunnen geven aan de views
+        ac = new AdminController(db);
+        hc = new HorseController(db);
+        rc = new RiderController(db);
+        ic = new InstructorController(db);
+        lc = new LessonController(db, ic, rc, hc);
         authView = new AuthenticationView(ac);
 
         showLogin();
@@ -52,7 +57,7 @@ public class Equiplanner extends Application {
         stage.show();
     }
 
-    // --- Shows different overviews and passes the navbar ---
+    // --- Methode om verschillende overviews in te laden en hier de navbar aan mee te geven ---
     public void showOverview(String activeItem) {
         BorderPane layout = new BorderPane();
 
@@ -60,7 +65,7 @@ public class Equiplanner extends Application {
         NavBar navBar = new NavBar(this);
         layout.setLeft(navBar.getNavBar(activeItem));
 
-        // --- Conditional overview ---
+        // --- Conditionele pagina inhoud ---
         Pane content;
         switch (activeItem) {
             case "Paarden overzicht":
@@ -69,8 +74,11 @@ public class Equiplanner extends Application {
             case "Ruiter overzicht":
                 content = new RiderOverview(rc).getContent();
                 break;
+            case "Instructeur overzicht":
+                content = new InstructorOverview(ic).getContent();
+                break;
             case "Lessen overzicht":
-                content = new LessonOverview().getContent();
+                content = new LessonOverview(lc).getContent();
                 break;
             default:
                 content = new Pane();

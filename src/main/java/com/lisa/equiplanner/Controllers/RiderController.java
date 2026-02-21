@@ -280,8 +280,8 @@ public class RiderController {
                     "SELECT l.LessonDate, p.FirstName, p.LastName " +
                             "FROM Combination c " +
                             "JOIN Lesson l ON c.LessonID = l.LessonID " +
-                            "JOIN Person p ON c.rider_id = p.PersonID " +
-                            "WHERE c.horse_id = ?"
+                            "JOIN Person p ON c.riderID = p.PersonID " +
+                            "WHERE c.horseID = ?"
             );
             ps.setInt(1, rider.getPersonId());
             ResultSet rs = ps.executeQuery();

@@ -1,7 +1,6 @@
 package com.lisa.equiplanner.Views;
 
 import com.lisa.equiplanner.Controllers.RiderController;
-import com.lisa.equiplanner.Models.Horse;
 import com.lisa.equiplanner.Models.Rider;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
