@@ -9,6 +9,7 @@ public class Combination {
         this.horse = horse;
     }
 
+    // Getters
     public Rider getRider() {
         return rider;
     }
